@@ -1,0 +1,23 @@
+table {
+  border: 2px solid forestgreen;
+  border-collapse: collapse;
+  width: auto;
+  height: 200px;
+}
+
+th {
+  border-bottom: 1px solid black;
+}
+
+td {
+  text-align: center;
+  border: 1px solid;
+}
+
+button {
+  margin-bottom: 10px;
+}
+
+div {
+  text-align: center;
+}
