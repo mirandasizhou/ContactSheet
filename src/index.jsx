@@ -4,6 +4,7 @@ import axios from 'axios';
 import Add from './components/Add.jsx';
 import ContactList from './components/ContactList.jsx';
 import Search from './components/Search.jsx';
+import Filter from './components/Filter.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -18,6 +19,7 @@ class App extends React.Component {
     this.search = this.search.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.reset = this.reset.bind(this);
+    this.loadFilter = this.loadFilter.bind(this);
   }
 
   componentDidMount() {
@@ -43,6 +45,12 @@ class App extends React.Component {
     })
   }
 
+  loadFilter(list) {
+    this.setState({
+      contacts: list
+    });
+  }
+
   search() {
     var term = this.state.term;
     var list = this.state.contacts;
@@ -63,7 +71,7 @@ class App extends React.Component {
   }
 
   reset() {
-    this.getContacts();
+    window.location.reload();
   }
 
   loadAdd() {
@@ -83,6 +91,7 @@ class App extends React.Component {
       <>
         <h1>BenefitMall Contact List</h1>
         <div>
+          <Filter contacts={this.state.contacts} loadFilter={this.loadFilter} resetFilter={this.getContacts}/>
           Search: <input value={this.state.term} onChange={this.handleSearch} />
           <button onClick={this.search}>Submit</button>
           <button onClick={this.reset}>Reset</button>
